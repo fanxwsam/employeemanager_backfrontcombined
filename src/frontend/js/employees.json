@@ -1,0 +1,29 @@
+[{
+        "id": 1,
+        "jobTitle": "Senior Developer",
+        "firstName": "Sam",
+        "surName": "Fan",
+        "email": "fanxwsam@gmail.com",
+        "phone": "0431288362",
+        "address": {
+            "street": "32 Tweed Quadrant",
+            "city": "Perth",
+            "state": "WA",
+            "postcode": "6000"
+        }
+    },
+    {
+        "id": 2,
+        "jobTitle": "Business Analysis",
+        "firstName": "Alice",
+        "surName": "Caysie",
+        "email": "alice_caysie@gmail.com",
+        "phone": "0431288532",
+        "address": {
+            "street": "46 Bailey Mead",
+            "city": "Calga",
+            "state": "NSW",
+            "postcode": "2250"
+        }
+    }
+]

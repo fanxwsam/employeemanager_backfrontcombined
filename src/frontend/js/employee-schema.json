@@ -1,0 +1,55 @@
+{
+    "properties": {
+        "id": {
+            "hidden": true
+        },
+        "type": {
+            "hidden": true
+        },
+        "jobTitle": {
+            "enum": [
+                "Tester",
+                "Business Analysis",
+                "Developer",
+                "Senior Developer",
+                "Manager"
+            ],
+            "required": true,
+            "propertyOrder": 1
+        },
+        "firstName": {
+            "type": "string",
+            "required": true,
+            "propertyOrder": 2
+        },
+        "surName": {
+            "type": "string",
+            "required": true,
+            "propertyOrder": 3
+        },
+        "email": {
+            "type": "string",
+            "required": true,
+            "propertyOrder": 4
+        },
+        "phone": {
+            "type": "string",
+            "required": true,
+            "propertyOrder": 5
+        },
+        "dateOfBirth": {
+            "type": "date",
+            "title": "Date of Birth",
+            "propertyOrder": 6
+        },
+        "imageUrl": {
+            "type": "string",
+            "large": true,
+            "propertyOrder": 7
+        },
+        "address": {
+            "section": "Contact Details",
+            "propertyOrder": 8
+        }
+    }
+}
