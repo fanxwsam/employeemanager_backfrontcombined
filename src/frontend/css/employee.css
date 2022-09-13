@@ -314,6 +314,10 @@ body {
     width: 60px;
 }
 
+.ww-120 {
+    width: 120px;
+}
+
 h1,
 h2,
 h3,
@@ -340,4 +344,11 @@ h6 {
 a {
     color: #707070;
     cursor: pointer;
+}
+
+.center-cropped {
+    object-fit: cover;
+    object-position: center;
+    height: 65px;
+    width: 65px;
 }

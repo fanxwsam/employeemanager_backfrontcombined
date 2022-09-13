@@ -1,0 +1,13 @@
+<div id="dialog-position" style="z-index: 100">
+    <div id="dialog">
+        <div id="dialog-heading">{{dialogTitle}}</div>
+        <div id="dialog-content">
+            <img id="dialog-image" ng-src="{{current.imageUrl}}" alt="" class="img-fluid rounded ww-120" />
+            <metawidget ng-model="current" read-only="readOnly" config="metawidgetConfig.form">
+                <facet name="footer">
+                    <metawidget ng-model="crudActions" config="metawidgetConfig.buttons"></metawidget>
+                </facet>
+            </metawidget>
+        </div>
+    </div>
+</div>

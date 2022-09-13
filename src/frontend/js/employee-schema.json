@@ -12,7 +12,8 @@
                 "Business Analysis",
                 "Developer",
                 "Senior Developer",
-                "Manager"
+                "Manager",
+                "CTO"
             ],
             "required": true,
             "propertyOrder": 1

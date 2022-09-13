@@ -51,7 +51,7 @@
                     // call RestAPI to delete the employee and refresh the employee list
                     $http
                         .delete(
-                            "http://localhost:8081/api/v1/employees/" + $scope.deletedEmp.id
+                            "api/v1/employees/" + $scope.deletedEmp.id
                         )
                         .success(function(data) {
                             // refresh the employee list
@@ -78,11 +78,43 @@
             $scope.lblMsg = null;
 
             // Constructor
-            switch ($routeParams.add) {
-                default: $scope.readOnly = false;
+            if ($routeParams.add) {
+                //switch ($routeParams.add) {
+                //default: $scope.readOnly = false;
+                $scope.readOnly = false;
                 $scope.current = {};
                 $scope.dialogTitle = "Create Employee";
                 $scope.current.type = $routeParams.add;
+            }
+
+            if ($routeParams.employeeId) {
+                $scope.readOnly = false;
+                $scope.current = {};
+                $scope.dialogTitle = "Edit Employee";
+                $scope.current.type = "add";
+
+                employees.then(function(result) {
+                    var employeeId = parseInt($routeParams.employeeId);
+
+                    for (
+                        var loop = 0, length = result.data.length; loop < length; loop++
+                    ) {
+                        if (result.data[loop].id === employeeId) {
+                            // Return a copy of the entry, in case the user hits
+                            // cancel
+                            $scope.current = angular.fromJson(
+                                angular.toJson(result.data[loop])
+                            );
+                            $scope.dialogTitle =
+                                "Edit " +
+                                $scope.current.firstName +
+                                " " +
+                                $scope.current.surName;
+
+                            break;
+                        }
+                    }
+                });
             }
 
             $scope.metawidgetConfig = metawidgetConfig;
@@ -122,7 +154,7 @@
                             // Save new
                             $http
                                 .post(
-                                    "http://localhost:8081/api/v1/employees",
+                                    "api/v1/employees",
                                     JSON.stringify($scope.current)
                                 )
                                 .success(function(data) {
@@ -130,8 +162,23 @@
                                     result.data.push(data);
                                 });
                         } else {
-                            // Update existing
-                            // To be implimented
+                            // Update existing employee
+                            $http
+                                .put(
+                                    "api/v1/employees",
+                                    JSON.stringify($scope.current)
+                                )
+                                .success(function(data) {
+                                    // refresh the employee list
+                                    for (
+                                        loop = 0, length = result.data.length; loop < length; loop++
+                                    ) {
+                                        if (result.data[loop].id === $scope.current.id) {
+                                            result.data.splice(loop, 1, $scope.current);
+                                            break;
+                                        }
+                                    }
+                                });
                         }
                         $location.path("");
                     });

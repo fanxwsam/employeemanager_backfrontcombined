@@ -14,7 +14,7 @@ public class EmployeeService {
     private final EmployeeRepo employeeRepo = new EmployeeRepo();
 
     public Employee addEmployee(Employee employee) {
-        return employeeRepo.saveEmployee(employee);
+        return employeeRepo.addEmployee(employee);
     }
 
     public List<Employee> findAllEmployees() {
@@ -23,5 +23,9 @@ public class EmployeeService {
 
     public void deleteEmployee(Long id) {
         employeeRepo.deleteEmployeeById(id);
+    }
+
+    public Employee saveEmployee(Employee employee) {
+        return employeeRepo.saveEmployee(employee);
     }
 }

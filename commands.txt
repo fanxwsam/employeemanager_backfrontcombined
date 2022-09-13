@@ -1,0 +1,8 @@
+.\mvnw clean install jib:build -Dimage=samuelest/employeemgr:v1
+docker pull samuelest/employeemgr:v1
+docker run -p 8081:8081 samuelest/employeemgr:v1
+
+
+.\mvnw clean install -P build-frontend -P jib-push-to-dockerhub -D app.image.tag=1
+docker pull samuelest/employeemanager-metawidget
+docker run -p 8081:8081 samuelest/employeemanager-metawidget

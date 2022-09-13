@@ -95,7 +95,7 @@
                   ><img
                     src="{{employee.imageUrl || '/media/no-image.png'}}"
                     alt=""
-                    class="img-fluid rounded-circle w-60"
+                    class="center-cropped rounded-circle"
                 /></a>
         </div>
         <div class="col-6 card-title align-self-center mb-0">
@@ -118,7 +118,7 @@
         </ul>
         <div class="card-body">
             <div class="float-right btn-group btn-group-sm">
-                <a href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i>
+                <a href="#/employee/edit/{{employee.id}}" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i>
                 </a>
                 <a href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete" ng-click="onOpenModal(employee, 'delete')"><i class="fa fa-times"></i
                 ></a>

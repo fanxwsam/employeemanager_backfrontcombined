@@ -19,6 +19,10 @@
                     templateUrl: "partials/employee-add.html",
                     controller: "employeeController",
                 })
+                .when("/employee/edit/:employeeId", {
+                    templateUrl: "partials/employee-edit.html",
+                    controller: "employeeController",
+                })
                 .when("", {
                     templateUrl: "partials/employee-none.html",
                 })

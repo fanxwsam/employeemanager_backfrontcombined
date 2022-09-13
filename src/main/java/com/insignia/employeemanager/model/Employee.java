@@ -2,7 +2,7 @@ package com.insignia.employeemanager.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 

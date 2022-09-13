@@ -43,7 +43,7 @@
         // Return a promise
 
         //return $http.get("js/employees.json");
-        return $http.get("http://localhost:8081/api/v1/employees");
+        return $http.get("api/v1/employees");
     })
 
     /**
@@ -87,6 +87,12 @@
 
                             return {
                                 properties: {
+                                    id: {
+                                        hidden: true,
+                                    },
+                                    employeeId: {
+                                        hidden: true,
+                                    },
                                     street: {
                                         type: "string",
                                         propertyOrder: 1,

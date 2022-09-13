@@ -5,6 +5,7 @@ import com.insignia.employeemanager.model.Employee;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author  Sam Fan
@@ -22,19 +23,19 @@ public class EmployeeRepo {
     static {
         Address add1 = Address.builder()
                 .employeeId(1L)
-                .street("25/31 Market St")
+                .street("1/20 Link Road")
                 .city("Sydney")
                 .state("NSW")
                 .postcode("2000")
                 .build();
         Employee emp1 = Employee.builder()
                 .id(1L)
-                .jobTitle("CTO")
-                .firstName("Richard")
-                .surName("Kennard")
-                .email("richard@wealthcenter.com")
+                .jobTitle("Manager")
+                .firstName("Elijah")
+                .surName("Brown")
+                .email("elijah_brown@msn.com")
                 .phone("0487653876")
-                .imageUrl("https://media-exp1.licdn.com/dms/image/C4E03AQFf-U8tYH8QFQ/profile-displayphoto-shrink_800_800/0/1516298371127?e=1668643200&v=beta&t=TCcyHL8ze1AuntCMxG5EV3BSTa5usUAfyzA55uhJsTE")
+                .imageUrl("https://blog.hubspot.com/hubfs/Developer%20centering%20images%20in%20HTML.jpg")
                 .address(add1)
                 .build();
 
@@ -119,9 +120,9 @@ public class EmployeeRepo {
         }
     }
 
-    // save an employee in the employee list
-    // the employee will be added to the employess, in memory
-    public Employee saveEmployee(Employee employee){
+    // insert a new employee in the employee list
+    // the employee will be added to the employees, in memory
+    public Employee addEmployee(Employee employee){
         Long existingMaxId;
         List<Employee> list = this.getEmployees();
         if(this.getEmployees().size() > 0) {
@@ -141,6 +142,24 @@ public class EmployeeRepo {
 
         // add the new employee to the employee list
         this.getEmployees().add(employee);
+        return employee;
+    }
+
+
+    public Employee saveEmployee(Employee employee) {
+        Long employeeId = employee.getId();
+
+        // update the employee in the employee list
+        if(this.getEmployees().size() > 0) {
+            Employee existingEmp = this.getEmployees()
+                    .stream()
+                    .filter(emp -> emp.getId().equals(employeeId))
+                    .findFirst()
+                    .orElseThrow(NoSuchElementException::new);
+            // replace the object and keep the index
+            this.getEmployees().set(this.getEmployees().indexOf(existingEmp), employee);
+        }
+
         return employee;
     }
 }
